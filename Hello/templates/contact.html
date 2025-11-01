@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %} Contact Us {% endblock title %}
+
+{% block body %}
+<!-- Hero Section -->
+<div class="container-fluid px-0"> 
+  <img src="https://tse4.mm.bing.net/th/id/OIP.HWGdPiMg7QPPOSA2VKh83QHaCr?rs=1&pid=ImgDetMain&o=7&rm=3"
+       class="d-block w-100 mx-0"
+       alt="Contact Banner"
+       style="height: 450px; object-fit: cover;">
+  <div class="carousel-caption d-none d-md-block">
+    <h1 class="display-4 fw-bold">Get In Touch</h1>
+    <p class="lead">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+  </div>
+</div>
+
+<!-- Contact Form Section -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header secondary text-black text-center py-4">
+          <h2 class="mb-0"><i class="fas fa-envelope me-2"></i>Contact Form</h2>
+          <p class="mb-0 mt-2">Fill out the form below and we'll get back to you</p>
+        </div>
+        
+        <div class="card-body p-5">
+          <!-- Success/Error Messages -->
+          {% if success %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle me-2"></i>
+              {{ success }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+
+          {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              {{ error }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+
+          <form method="POST" action="/contact/" id="contactForm" novalidate>
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="name" class="form-label fw-bold">
+                    <i class="fas fa-user me-1"></i>Full Name *
+                  </label>
+                  <input type="text" class="form-control form-control-lg" id="name" name="name" 
+                         placeholder="Enter your full name" 
+                         value="{% if form_data.name %}{{ form_data.name }}{% endif %}" 
+                         required>
+                  <div class="invalid-feedback">
+                    Please provide your full name.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="email" class="form-label fw-bold">
+                    <i class="fas fa-envelope me-1"></i>Email Address *
+                  </label>
+                  <input type="email" class="form-control form-control-lg" id="email" name="email" 
+                         placeholder="Enter your email address" 
+                         value="{% if form_data.email %}{{ form_data.email }}{% endif %}" 
+                         required>
+                  <div class="invalid-feedback">
+                    Please provide a valid email address.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="phone" class="form-label fw-bold">
+                <i class="fas fa-phone me-1"></i>Phone Number *
+              </label>
+              <input type="tel" class="form-control form-control-lg" id="phone" name="phone" 
+                     placeholder="Enter your phone number" 
+                     value="{% if form_data.phone %}{{ form_data.phone }}{% endif %}" 
+                     required>
+              <div class="invalid-feedback">
+                Please provide your phone number.
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="desc" class="form-label fw-bold">
+                <i class="fas fa-comment me-1"></i>Message *
+              </label>
+              <textarea class="form-control form-control-lg" id="desc" name="desc" rows="4" 
+                        placeholder="Tell us how we can help you..." required>{% if form_data.desc %}{{ form_data.desc }}{% endif %}</textarea>
+              <div class="invalid-feedback">
+                Please provide your message.
+              </div>
+              <div class="form-text">Minimum 10 characters required.</div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input type="checkbox" class="form-check-input" id="termsCheck" required>
+              <label class="form-check-label" for="termsCheck">
+                I agree to the <a href="#" class="text-primary">Terms and Conditions</a> and <a href="#" class="text-primary">Privacy Policy</a> *
+              </label>
+              <div class="invalid-feedback">
+                You must agree to the terms and conditions.
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="reset" class="btn btn-outline-secondary btn-lg me-md-2">
+                <i class="fas fa-undo me-1"></i>Reset
+              </button>
+              <button type="submit" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-paper-plane me-1"></i>Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Information Section -->
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Address</h5>
+            <p class="card-text">123 Main Street<br>City, State 12345<br>Country</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <i class="fas fa-phone fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Phone</h5>
+            <p class="card-text">+1 (555) 123-4567<br>Mon - Fri: 9:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Email</h5>
+            <p class="card-text">info@pranvisite.com<br>support@pranvisite.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom JavaScript for Form Validation -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const descInput = document.getElementById('desc');
+    const termsCheck = document.getElementById('termsCheck');
+
+    // Real-time validation
+    nameInput.addEventListener('input', function() {
+        if (this.value.length < 2) {
+            this.setCustomValidity('Name must be at least 2 characters long');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    emailInput.addEventListener('input', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(this.value)) {
+            this.setCustomValidity('Please enter a valid email address');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    phoneInput.addEventListener('input', function() {
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        if (!phoneRegex.test(this.value.replace(/\s/g, ''))) {
+            this.setCustomValidity('Please enter a valid phone number');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    descInput.addEventListener('input', function() {
+        if (this.value.length < 10) {
+            this.setCustomValidity('Message must be at least 10 characters long');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    form.addEventListener('submit', function(e) {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+
+{% endblock body %}

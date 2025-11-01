@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %} About Us {% endblock title %}
+
+{% block body %}
+<div class="container-fluid px-0">
+  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0"
+       class="d-block w-100"
+       alt="About Us Banner"
+       style="height: 400px; object-fit: cover;">
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="text-center mb-4">Showing My First Project</h1>
+      
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Our Mission</h3>
+          <p class="card-text">
+            Welcome to Pranvi's Site! We are dedicated to providing you with the best experience 
+            through our innovative web platform. Our mission is to connect people, share knowledge, 
+            and create meaningful interactions in the digital world.
+          </p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h3 class="card-title">What We Do</h3>
+          <p class="card-text">
+            Our platform offers a variety of features including:
+          </p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Interactive contact forms for seamless communication</li>
+            <li class="list-group-item">Beautiful, responsive design that works on all devices</li>
+            <li class="list-group-item">User-friendly interface for easy navigation</li>
+            <li class="list-group-item">Secure data handling and privacy protection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h3 class="card-title">Our Values</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Innovation</h5>
+              <p>We constantly strive to improve and innovate our platform to serve you better.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Quality</h5>
+              <p>We maintain the highest standards in everything we do, from design to functionality.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>User Experience</h5>
+              <p>Your satisfaction is our priority, and we design with you in mind.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Reliability</h5>
+              <p>We provide a stable, secure, and dependable platform for all your needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <h3>Get in Touch</h3>
+        <p class="lead">Have questions or want to learn more? We'd love to hear from you!</p>
+        <a href="/contact/" class="btn btn-primary btn-lg">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
